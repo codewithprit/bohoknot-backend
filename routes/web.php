@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,3 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get("/api/greet", [ApiController::class, "greet"]);
+
+Route::get('/register', [RegisterController::class, "register"]);

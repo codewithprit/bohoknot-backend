@@ -10,6 +10,7 @@ class ApiController extends Controller
 
     public function greet(){
         print("bkl");exit;
+        $data = $request->input();
         // return response->json([
         //     "message" => "hello"
         // ]);
