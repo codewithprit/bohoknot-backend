@@ -42,9 +42,4 @@ class RegisterController extends Controller
             'id'       =>  $user->id
         ]);
     }
-
-
-    public function login(){
-        return "jshdgfh";
-    }
 }
