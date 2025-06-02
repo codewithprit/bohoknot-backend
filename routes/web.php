@@ -9,5 +9,10 @@ Route::get('/', function () {
 });
 
 Route::get("/api/greet", [ApiController::class, "greet"]);
-Route::get('/register', [RegisterController::class, "register"]);
-Route::get('/login', [LoginController::class, "login"]);
+// Route::middleware('api')->prefix('api')->group(function(){
+
+//     Route::post('/register', [RegisterController::class, "register"]);
+//     Route::post('/login', [LoginController::class, "login"]);
+// });
+
+

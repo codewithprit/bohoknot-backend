@@ -11,7 +11,13 @@ class LoginController extends Controller
 {
     public function login(Request $request){
         $validator = Validator::make($request->all(), [
-            'login'  => 'required|string'
+            'email'  =>  'sometimes|nullable|email|required_without:phone',
+            'phone'  =>  'sometimes|nullable|string|required_without:email',
+
+            [
+                'email.required_without'  =>  'Please Provide Email or Phone',
+                'phone.required_without'  =>  'Please Provide Email or Phone'
+            ]
 
         ]);
 
@@ -22,16 +28,17 @@ class LoginController extends Controller
             ], 422);
         }
 
-        $user = User::where('email', $request->login)
-                    ->orWhere('phone', $request->login)
+        $user = User::where('email', $request->email)
+                    ->orWhere('phone', $request->phone)
                     ->first();
 
         if(!$user){
             return response()->json([
                 'status'  =>  false,
-                'message' => 'user not not found with given email or phone'
+                'message' => 'user not not found with given email or phone, try to register first'
             ], 404);
         }
+        return $user;exit;
 
         $otp = rand(100000, 999999);
         $user->otp = $otp;
