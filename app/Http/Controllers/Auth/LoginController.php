@@ -28,17 +28,32 @@ class LoginController extends Controller
             ], 422);
         }
 
-        $user = User::where('email', $request->email)
-                    ->orWhere('phone', $request->phone)
-                    ->first();
-
-        if(!$user){
+        if(!empty($request->email) && !empty($request->phone)){
             return response()->json([
-                'status'  =>  false,
-                'message' => 'user not not found with given email or phone, try to register first'
-            ], 404);
+                "status"  => false,
+                "message" => "Please provide either email or phone"
+            ]);
         }
-        return $user;exit;
+
+        $user = null;
+        if(!empty($request->email)){
+            $user = User::where('email', $request->email)->first();
+            if(empty($user)){
+                return response()->json([
+                    'status'   => false,
+                    'message'  => "User not found with the Email. Try to Register First"
+                ], 404);
+            }
+        }elseif(!empty($user->phone)){
+            $user = User::where('phone', $request->phone)->first();
+            if(empty($user)){
+                return response()->json([
+                    'status'   => false,
+                    'message'  => 'User not found with the phone. Try to Register First'
+                ], 404);
+            }
+        }
+        // return $user;exit;
 
         $otp = rand(100000, 999999);
         $user->otp = $otp;
