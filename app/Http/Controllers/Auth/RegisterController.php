@@ -29,11 +29,12 @@ class RegisterController extends Controller
         $otp = rand(100000, 999999);
 
         $user = User::create([
-            'name'      => $request->name,
-            'email'     => $request->email,
-            'phone'     => $request->phone,
-            'otp'       => $otp,
-            'password'  =>  Hash::make($request->password)
+            'name'         => $request->name,
+            'email'        => $request->email,
+            'phone'        => $request->phone,
+            'otp'          => $otp,
+            'otp_time_out' => now()->addMinutes(7),
+            'password'     =>  Hash::make($request->password)
         ]);
 
         return response()->json([
