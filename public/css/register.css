@@ -1,0 +1,131 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Centering */
+body {
+    background: #f6f7fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Form box */
+.form-box {
+    background: #fff;
+    padding: 40px 35px;
+    width: 360px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Floating label input */
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.6px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s;
+    background: transparent;
+}
+
+.input-group input:focus {
+    border-color: #4c8bf5;
+}
+
+/* Label */
+.input-group label {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    padding: 0 4px;
+    color: #777;
+    pointer-events: none;
+    transition: 0.2s ease;
+}
+
+/* Floating effect */
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: -7px;
+    font-size: 12px;
+    color: #4c8bf5;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #4c8bf5;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #3a77e7;
+}
+
+/* Login Link */
+.login-link {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #4c8bf5;
+    text-decoration: none;
+}
+
+
+.input-group-select {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group-select select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    margin-top: 6px;
+}
+
+.select-label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.static-label {
+    position: absolute;
+    top: -12px;
+    font-size: 12px;
+    background: white;
+    padding: 0 4px;
+}
