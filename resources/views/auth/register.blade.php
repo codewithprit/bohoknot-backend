@@ -28,7 +28,13 @@
         <!-- EMAIL OR PHONE -->
         <div class="input-group">
             <input type="text" id="email_or_phone" name="email_or_phone" required>
-            <label>Email or Phone</label>
+            <label>Email</label>
+        </div>
+
+        <!-- Phone -->
+         <div class="input-group">
+            <input type="text" id="phone" name="phone" required>
+            <label>Phone</label>
         </div>
 
         <!-- DOB -->
