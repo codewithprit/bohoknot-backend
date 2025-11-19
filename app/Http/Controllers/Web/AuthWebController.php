@@ -19,11 +19,58 @@ class AuthWebController extends Controller
         $validator = Validator::make($request->all(),[
             'first_name' => 'requered|string|max:30',
             'last_name'  => 'required|string|max:30',
-            'email_or_phone' => 'required|string|max:60',
+            'email'      => 'nullable|email|max:60',
             'dob'        => 'nullable|date',
             'gender'     => 'nullable|in:Male, Female, Others',
             'newsletter' => 'nukllable|in:Yes, No'
         ]);
+
+
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+
+        if(empty($request->email) && empty($request->phone)){
+            return back()->withErrors([
+                'email' => 'Please provide at least an email or phone number',
+                'phone' => 'Please provide at least an email or phone number'
+            ]);
+        }
+
+        if(!empty($request->email)){
+            $existingUser = User::where('email', $request->email)->first();
+            if($existingUser){
+                return back()->withErrors('Email is already registered')->withInput();
+            }
+        }
+
+        if(!empty($request->phone)){
+            $existingUser = User::where('phone', $request->phone)->first();
+            if($existingUser){
+                return back()->withErrors('Phone number is already registered')->withInput();
+            }
+        }
+
+        $otp = rand(100000, 999999);
+
+        $otp_target = !empty($request->phone) ? $request->phone : $request->email;
+
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'last_name'  => $request->last_name,
+            'email'      => $request->email,
+            'phone'      => $request->phone,
+            'dob'        => $request->dob,
+            'gender'     => $request->gender,
+            'newsletter' => $request->newsletter,
+            'otp'        => $otp,
+            'otp_time_out'=> now()->addMinutes(7),
+            // 'password'   => 
+        ]);
+
+        session()->put('user_id', $user->id);
+        
+
     }
 
     public function showLoginForm(){
