@@ -25,8 +25,9 @@
             <label>Last Name</label>
         </div>
 
-        <!-- EMAIL OR PHONE -->
+        <!-- EMAIL -->
         <div class="input-group">
+<<<<<<< Updated upstream
             <input type="text" id="email_or_phone" name="email_or_phone" required>
             <label>Email</label>
         </div>
@@ -35,6 +36,16 @@
          <div class="input-group">
             <input type="text" id="phone" name="phone" required>
             <label>Phone</label>
+=======
+            <input type="text" id="email_id" name="email_id" required>
+            <label>Enter Email</label>
+        </div>
+
+        <!-- PHONE -->
+         <div class="input-group">
+            <input type="text" id="phone_id" name="phone_id" required>
+            <label>Enter Phone</label>
+>>>>>>> Stashed changes
         </div>
 
         <!-- DOB -->
