@@ -17,14 +17,14 @@ class AuthWebController extends Controller
 
     public function handleRegisterForm(Request $request){
         $validator = Validator::make($request->all(),[
-            'first_name' => 'requered|string|max:30',
+            'first_name' => 'required|string|max:30',
             'last_name'  => 'required|string|max:30',
-            'email'      => 'nullable|email|max:60',
+            'email' => 'nullable|email|max:60|unique:users,email',
+            'phone' => 'nullable|string|max:20|unique:users,phone',
             'dob'        => 'nullable|date',
             'gender'     => 'nullable|in:Male, Female, Others',
-            'newsletter' => 'nukllable|in:Yes, No'
+            'newsletter' => 'nullable|in:Yes, No'
         ]);
-
 
         if($validator->fails()){
             return back()->withErrors($validator)->withInput();
@@ -69,8 +69,7 @@ class AuthWebController extends Controller
         ]);
 
         session()->put('user_id', $user->id);
-        
-
+        return redirect()->route('show.otp.form')->with('success', 'Registration successful. OTP sent to ' . $otp_target);
     }
 
     public function showLoginForm(){
