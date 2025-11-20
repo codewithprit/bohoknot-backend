@@ -69,8 +69,6 @@ class AuthWebController extends Controller
         ]);
 
         session()->put('user_id', $user->id);
-        
-
         return redirect()->route('show.otp.form')->with('success', 'Registration successful. OTP sent to ' . $otp_target);
     }
 
