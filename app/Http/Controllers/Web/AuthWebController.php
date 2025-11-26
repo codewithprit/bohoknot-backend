@@ -16,17 +16,18 @@ class AuthWebController extends Controller
 
 
     public function handleRegisterForm(Request $request){
+        // return $request->all();
         $validator = Validator::make($request->all(),[
-            'first_name' => 'required|string|max:30',
-            'last_name'  => 'required|string|max:30',
+            'name' => 'required|string|max:50',
             'email' => 'nullable|email|max:60|unique:users,email',
             'phone' => 'nullable|string|max:20|unique:users,phone',
             'dob'        => 'nullable|date',
-            'gender'     => 'nullable|in:Male, Female, Others',
+            'gender'     => 'nullable|in:Male,Female,Others',
             'newsletter' => 'nullable|in:Yes, No'
         ]);
 
         if($validator->fails()){
+
             return back()->withErrors($validator)->withInput();
         }
 
@@ -56,16 +57,14 @@ class AuthWebController extends Controller
         $otp_target = !empty($request->phone) ? $request->phone : $request->email;
 
         $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name'  => $request->last_name,
+            'name'       =>$request->name,
             'email'      => $request->email,
             'phone'      => $request->phone,
             'dob'        => $request->dob,
             'gender'     => $request->gender,
             'newsletter' => $request->newsletter,
             'otp'        => $otp,
-            'otp_time_out'=> now()->addMinutes(7),
-            // 'password'   => 
+            'otp_time_out'=> now()->addMinutes(7)
         ]);
 
         session()->put('user_id', $user->id);

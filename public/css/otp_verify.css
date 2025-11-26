@@ -1,0 +1,26 @@
+/* OTP Page Specific Styles */
+.otp-box h2 {
+    margin-bottom: 15px;
+}
+
+.otp-subtext {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.resend-link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.resend-link a {
+    color: #4c8bf5;
+    text-decoration: none;
+}
+
+.resend-link a:hover {
+    text-decoration: underline;
+}

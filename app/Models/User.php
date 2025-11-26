@@ -22,9 +22,11 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'phone',
+        'dob',
+        'gender',
+        'newsletter',
         'otp',
         'otp_time_out',
-        'password',
     ];
 
     /**
@@ -33,7 +35,6 @@ class User extends Authenticatable implements JWTSubject
      * @var list<string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -46,7 +47,6 @@ class User extends Authenticatable implements JWTSubject
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
         ];
     }
 
