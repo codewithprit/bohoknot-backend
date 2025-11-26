@@ -9,40 +9,37 @@
 <body>
 
 <div class="container">
-    <form class="form-box" action="" method="POST">
+    <form class="form-box" method="POST" action="{{route('register')}}">
         @csrf
         <h2>Create Account</h2>
 
         <!-- FIRST NAME -->
         <div class="input-group">
-            <input type="text" id="first_name" name="first_name" required>
-            <label>First Name</label>
+            <input type="text" id="name" name="name">
+            <label>Enter Name</label>
         </div>
-
-        <!-- LAST NAME -->
-        <div class="input-group">
-            <input type="text" id="last_name" name="last_name" required>
-            <label>Last Name</label>
-        </div>
+        @error('name')<p class="error">{{$message}}</p>@enderror
 
         <!-- EMAIL -->
         <div class="input-group">
-            <input type="text" id="email_id" name="email_id" required>
+            <input type="text" id="email" name="email">
             <label>Enter Email</label>
         </div>
+        @error('email')<p class="error">{{$message}}</p>@enderror
 
         <!-- PHONE -->
          <div class="input-group">
-            <input type="text" id="phone_id" name="phone_id" required>
+            <input type="text" id="phone" name="phone">
             <label>Enter Phone</label>
         </div>
+        @error('phone')<p class="error">{{$message}}</p>@enderror
 
         <!-- DOB -->
         <div class="input-group">
             <input type="date" id="dob" name="dob">
             <label class="static-label">Date of Birth</label>
         </div>
-
+        @error('dob')<p class="error">{{$message}}</p>@enderror
         <!-- GENDER -->
         <div class="input-group-select">
             <label class="select-label">Gender</label>
@@ -53,6 +50,7 @@
                 <option>Others</option>
             </select>
         </div>
+        @error('gender')<p class="error">{{$message}}</p>@enderror
 
         <!-- NEWSLETTER -->
         <div class="input-group-select">
