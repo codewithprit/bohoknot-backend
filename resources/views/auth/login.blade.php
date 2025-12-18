@@ -52,7 +52,7 @@
             </form>
 
             <div class="signup-link">
-                <p>Don't have an account? <a href="#">Create one</a></p>
+                <p>Don't have an account? <a href="{{route('register-form')}}">Create one</a></p>
             </div>
 
             <div class="success-message" id="successMessage">

@@ -2,6 +2,7 @@
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Web\AuthWebController;
 use App\Http\Controllers\DebugController;
+use App\Http\Controllers\Web\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,14 +15,17 @@ Route::get('/', function () {
 // });
 
 
-Route::get("/login", [AuthWebController::class, "showLoginForm"]);
-// Route::post("login", [AuthWebController::class, "handleRegisterForm"]);
+Route::get("/login", [AuthWebController::class, "showLoginForm"])->name('login-form');
+Route::post("login", [AuthWebController::class, "handleRegisterForm"]);
 
-Route::get("/register", [AuthWebController::class, "showRegisterForm"]);
+Route::get("/register", [AuthWebController::class, "showRegisterForm"])->name('register-form');
 Route::post("/register", [AuthWebController::class, "handleRegisterForm"])->name("register");
 
 Route::get("/otp", [AuthWebController::class, "showOtpform"])->name("show.otp.form");
 
+
+//Product Routes
+Route::get("products", [ProductController::class, "productHomePage"])->name('products');
 
 Route::get("session_data", [DebugController::class, "showSession"]);
 

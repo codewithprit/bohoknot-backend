@@ -65,7 +65,7 @@
         <button type="submit" id="register_continue" class="btn">Continue</button>
 
         <p class="login-link">
-            Already have an account? <a href="#">Login</a>
+            Already have an account? <a href="{{route('login-form')}}">Login</a>
         </p>
     </form>
 </div>

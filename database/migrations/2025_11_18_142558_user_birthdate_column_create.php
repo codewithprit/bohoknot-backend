@@ -40,23 +40,23 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-            if (Schema::hasColumn('users', 'newsletter')) {
+            if(Schema::hasColumn('users', 'newsletter')){
                 $table->dropColumn('newsletter');
             }
 
-            if (Schema::hasColumn('users', 'gender')) {
+            if(Schema::hasColumn('users', 'gender')){
                 $table->dropColumn('gender');
             }
 
-            if (Schema::hasColumn('users', 'dob')) {
+            if(Schema::hasColumn('users', 'dob')){
                 $table->dropColumn('dob');
             }
 
-            if (Schema::hasColumn('users', 'last_name')) {
+            if(Schema::hasColumn('users', 'last_name')){
                 $table->dropColumn('last_name');
             }
 
-            if (Schema::hasColumn('users', 'first_name')) {
+            if(Schema::hasColumn('users', 'first_name')){
                 $table->dropColumn('first_name');
             }
         });
