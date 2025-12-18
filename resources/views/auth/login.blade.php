@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bohoknot Login</title>
+@extends('layouts.app')
+@section('title', 'Login')
+@section('styles')
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
-</head>
-<body>
-    <div class="login-container">
+@endsection
+
+@section('content')
+     <div class="login-container">
         <div class="login-card">
             <div class="login-header">
                 <h2>Sign In</h2>
@@ -62,8 +60,4 @@
             </div>
         </div>
     </div>
-
-    <script src="../../shared/js/form-utils.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+@endsection
