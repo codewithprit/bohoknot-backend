@@ -10,5 +10,12 @@ class ProductController extends Controller
     public function productHomePage(){
         return view('products.products');
     }
-}
+
+
+    public function productDetailsPage($id){
+        return view('products.product_details', ['id' => $id]);
+    }
+
+
     
+}
